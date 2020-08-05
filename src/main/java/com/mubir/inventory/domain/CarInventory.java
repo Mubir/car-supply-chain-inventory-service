@@ -15,14 +15,14 @@ import java.util.UUID;
 public class CarInventory extends BaseEntity{
     @Builder
     public CarInventory(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate,
-                        UUID beerId, String upc, Integer quantityOnHand) {
+                        UUID carId, String upc, Integer quantityOnHand) {
         super(id, version, createdDate, lastModifiedDate);
-        this.beerId = beerId;
+        this.carId = carId;
         this.upc = upc;
         this.quantityOnHand = quantityOnHand;
     }
 
-    private UUID beerId;
+    private UUID carId;
     private String upc;
     private Integer quantityOnHand = 0;
 }
