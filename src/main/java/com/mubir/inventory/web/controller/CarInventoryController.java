@@ -24,7 +24,12 @@ public class CarInventoryController {
     @GetMapping("/api/v1/car/{carId}/inventory")
     List<CarInventoryDto> listCarById(@PathVariable UUID carId)
     {
-        return carInventoryRepository.findAllById(carId)
+        log.warn(" calling form outside");
+        log.error(carInventoryRepository.findAllByCarId(carId)
+                .stream()
+                .map(carInventoryMapper::carInventoryToCarInventoryDot)
+                .collect(Collectors.toList()).toString());
+        return carInventoryRepository.findAllByCarId(carId)
                 .stream()
                 .map(carInventoryMapper::carInventoryToCarInventoryDot)
                 .collect(Collectors.toList());

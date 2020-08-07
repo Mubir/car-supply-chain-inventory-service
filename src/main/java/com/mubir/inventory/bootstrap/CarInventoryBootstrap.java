@@ -2,6 +2,7 @@ package com.mubir.inventory.bootstrap;
 
 import com.mubir.inventory.domain.CarInventory;
 import com.mubir.inventory.repositories.CarInventoryRepository;
+import com.mubir.inventory.web.mapper.CarInventoryMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -21,7 +22,7 @@ public class CarInventoryBootstrap implements CommandLineRunner {
     public static final UUID CAR_3_UUID = UUID.fromString("026cc3c8-3a0c-4083-a05b-e908048c1b08");
 
     private final CarInventoryRepository carInventoryRepository;
-
+    private final CarInventoryMapper mapper;
     @Override
     public void run(String... args) throws Exception {
         if(carInventoryRepository.count() == 0){
@@ -44,13 +45,13 @@ public class CarInventoryBootstrap implements CommandLineRunner {
                 .quantityOnHand(50)
                 .build());
 
-        carInventoryRepository.saveAndFlush(CarInventory
+        carInventoryRepository.save(CarInventory
                 .builder()
                 .carId(CAR_3_UUID)
                 .upc(CAR_3_UPC)
                 .quantityOnHand(50)
                 .build());
 
-        log.debug("Loaded Inventory. Record count: " + carInventoryRepository.count());
+        log.error("** bLoaded Inventory. Record count: " + carInventoryRepository.findById(CAR_2_UUID));
     }
 }
