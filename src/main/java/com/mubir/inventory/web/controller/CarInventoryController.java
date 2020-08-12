@@ -25,7 +25,7 @@ public class CarInventoryController {
     List<CarInventoryDto> listCarById(@PathVariable UUID carId)
     {
         log.warn(" calling form outside");
-        log.error(carInventoryRepository.findAllByCarId(carId)
+        log.warn(carInventoryRepository.findAllByCarId(carId)
                 .stream()
                 .map(carInventoryMapper::carInventoryToCarInventoryDot)
                 .collect(Collectors.toList()).toString());
