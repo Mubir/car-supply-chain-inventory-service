@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface CarInventoryRepository extends JpaRepository<CarInventory, UUID> {
     List<CarInventory> findAllByCarId(UUID carId);
    // Optional<CarInventory> findByCarUpc(UUID uuid);
+    List<CarInventory> findAllByUpc(String upc);
 }
